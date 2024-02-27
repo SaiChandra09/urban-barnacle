@@ -1,4 +1,4 @@
-"""hello_world URL Configuration
+"""fbvCRUD URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -13,18 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-from quoteApp import views
 
-from hello_world.core import views as core_views
+from django.contrib import admin
+from django.urls import path
+from fbvApp import views
 
 urlpatterns = [
-    path("", core_views.renderTemplate),
-    path("details/",core_views.renderEmp),
     path("admin/", admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls"))
+    path("",views.getStudent),
+    path("create/",views.createStudent),
+    path("delete/<int:id>",views.deleteStudent),
+    path("update/<int:id>",views.updateStudent),
 ]
-
